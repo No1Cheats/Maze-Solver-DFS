@@ -37,7 +37,7 @@ def find_start(arr):
 
 def find_route(arr):
     starting_position = find_start(arr)
-    print(starting_position)
+    answer = ''
 
 
 def main():
