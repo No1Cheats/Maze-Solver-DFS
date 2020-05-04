@@ -4,7 +4,8 @@ import numpy as np
 def read_maze(src):
     f = open(src, 'r')
 
-    #arr = np.array([], np.int32)
+    arr = np.array([], np.int32)
+    x = []
     for line in f:
         list = []
         for c in range(len(line)):
@@ -18,11 +19,13 @@ def read_maze(src):
             if line[c] == 'B':
                 int = 3
             list.append(int)
-        print(list)
+        x.append(list)
+    arr = np.array(x)
+    return arr
 
 
 def main():
-    read_maze('maze-one.txt')
+    read_maze('test.txt')
 
 
 if __name__ == "__main__":
