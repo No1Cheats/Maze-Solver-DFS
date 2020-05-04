@@ -4,28 +4,44 @@ import numpy as np
 def read_maze(src):
     f = open(src, 'r')
 
-    arr = np.array([], np.int32)
     x = []
     for line in f:
-        list = []
+        my_list = []
         for c in range(len(line)):
-            int = 0
+            my_int = 0
             if line[c] == '*':
-                int = 0
+                my_int = 0
             if line[c] == ' ':
-                int = 1
+                my_int = 1
             if line[c] == 'A':
-                int = 2
+                my_int = 2
             if line[c] == 'B':
-                int = 3
-            list.append(int)
-        x.append(list)
+                my_int = 3
+            my_list.append(my_int)
+        x.append(my_list)
     arr = np.array(x)
+    # Columns print(len(arr))
+    # Rows print(len(arr[0]))
     return arr
 
 
+def find_start(arr):
+    for rows in range(len(arr)):
+        start = []
+        for columns in range(len(arr[rows])):
+            if arr[rows][columns] == 2:
+                start.append(rows)
+                start.append(columns)
+                return start
+
+
+def find_route(arr):
+    starting_position = find_start(arr)
+    print(starting_position)
+
+
 def main():
-    read_maze('test.txt')
+    find_route(read_maze('maze-one.txt'))
 
 
 if __name__ == "__main__":
