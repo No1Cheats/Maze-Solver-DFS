@@ -1,5 +1,6 @@
-import numpy as np
 import queue
+import time
+import numpy as np
 
 
 def read_maze(src):
@@ -137,4 +138,3 @@ def solve(txt_file):
 
 # To run the program
 solve('maze-zero.txt')
-
