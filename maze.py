@@ -1,5 +1,4 @@
 import queue
-import time
 import numpy as np
 
 
@@ -83,10 +82,10 @@ def print_solution(i, j, maze_txt, solution):
     for line in f:
         maze_list.append(line)
 
-    # A set that will later contain all of the i and j's that we have travelled through
+    # A set that will later contain all of the i and j's (positions) that we have travelled through
     pos = set()
 
-    # Looping though are solution except the last Char because otherwise we'll overwrite B with a dot
+    # Looping through our solution except the last Char because otherwise we'll overwrite B with a dot
     for c in solution[:-1]:
         if c == 'W':
             i -= 1
@@ -137,4 +136,4 @@ def solve(txt_file):
 
 
 # To run the program
-solve('maze-zero.txt')
+solve('maze-one.txt')
