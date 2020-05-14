@@ -3,7 +3,12 @@ import numpy as np
 
 
 def read_maze(src):
-    # Function to read the txt file and convert it to a numpy 2D array
+    """
+    Function to read the txt file and convert it to a numpy 2D array
+    :param src: a txt file containing a maze
+    :return: a numpy 2D array
+    """
+
     f = open(src, 'r')
     x = []
     for line in f:
@@ -26,7 +31,12 @@ def read_maze(src):
 
 
 def find_start(maze):
-    # Simple 2D loop to find the starting position 2 (A)
+    """
+    Simple 2D loop to find the starting position 2 (A)
+    :param maze: a 2D numpy array
+    :return: a list where list[0] is i and list[1] is j
+    """
+
     for rows in range(len(maze)):
         start = []
         for columns in range(len(maze[rows])):
@@ -37,7 +47,14 @@ def find_start(maze):
 
 
 def check_valid(maze, i, j, path):
-    # reads the char in the path and moves it according to N, S, E, W
+    """
+    Reads the char in the path and moves it according to N, S, E, W
+    :param maze: a 2D numpy array
+    :param i: position int
+    :param j: position int
+    :param path: a String such as SSSEEEWENS containing the instructions for navigating the maze
+    :return: a boolean if the path is valid
+    """
     for c in path:
         if c == 'W':
             i -= 1
@@ -57,7 +74,14 @@ def check_valid(maze, i, j, path):
 
 
 def find_solution(maze, i, j, path):
-    # reads the char in the path and moves it according to N, S, E, W
+    """
+    Reads the char in the path and moves it according to N, S, E, W
+    :param maze: a 2D numpy array
+    :param i: position int
+    :param j: position int
+    :param path: a String such as SSSEEEWENS containing the instructions for navigating the maze
+    :return: a boolean either True if we hit 3 (B) or False if we have not
+    """
     for c in path:
         if c == 'W':
             i -= 1
@@ -77,6 +101,14 @@ def find_solution(maze, i, j, path):
 
 
 def print_solution(i, j, maze_txt, solution):
+    """
+    Prints out the path (solution) and the input maze with a Path drawn in
+    :param i: position int
+    :param j: position int
+    :param maze_txt: a txt file containing a maze
+    :param solution: The path that leads us from A to B
+    :return: None
+    """
     f = open(maze_txt, 'r')
     maze_list = []
     for line in f:
@@ -110,9 +142,14 @@ def print_solution(i, j, maze_txt, solution):
 
 
 def solve(txt_file):
-    # BFS Algorithm using a standard Queue
-    # A queue to hold all of the paths due to this Algo being BFS the first to find B will also be the shortest
-    q = queue.Queue()
+    """
+    BFS Algorithm using a standard Queue
+    :param txt_file: a txt file containing a maze
+    :return: None
+    """
+    #
+    q = queue.Queue()  # A queue to hold all of the paths due to this Algo being BFS the first to find B will also be
+    # the shortest
     q.put('')  # Initialising the queue with an empty string
     path = ''  # Initialising the solution with an empty String
     maze = read_maze(txt_file)  # Reading the maze from the txt file
