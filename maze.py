@@ -8,7 +8,6 @@ def read_maze(src):
     :param src: a txt file containing a maze
     :return: a numpy 2D array
     """
-
     f = open(src, 'r')
     x = []
     for line in f:
@@ -36,7 +35,6 @@ def find_start(maze):
     :param maze: a 2D numpy array
     :return: a list where list[0] is i and list[1] is j
     """
-
     for rows in range(len(maze)):
         start = []
         for columns in range(len(maze[rows])):
@@ -147,7 +145,6 @@ def solve(txt_file):
     :param txt_file: a txt file containing a maze
     :return: None
     """
-    #
     q = queue.Queue()  # A queue to hold all of the paths due to this Algo being BFS the first to find B will also be
     # the shortest
     q.put('')  # Initialising the queue with an empty string
@@ -159,8 +156,8 @@ def solve(txt_file):
 
     while not find_solution(maze, x, y, path):  # As long as we have't found 3 (B) we'll keep looping
         path = q.get()  # Dequeue
-        for i in ['W', 'E', 'N', 'S']:  # Going through all 4 option each time
-            new = path + i  # new being a new possible path
+        for c in ['W', 'E', 'N', 'S']:  # Going through all 4 option each time
+            new = path + c  # new being a new possible path
             if check_valid(maze, x, y, new):  # only use it if it's valid though
                 if len(new) < 3:  # If it's length is below three backtracking won't hurt the performance at all
                     q.put(new)
