@@ -1,6 +1,11 @@
 import queue
 import numpy as np
 
+# Sources used except python documentation:
+# https://numpy.org/doc/
+# https://techwithtim.net/tutorials/breadth-first-search/
+# https://www.geeksforgeeks.org/python-using-2d-arrays-lists-the-right-way/
+
 
 def read_maze(src):
     """
@@ -145,8 +150,8 @@ def solve(txt_file):
     :param txt_file: a txt file containing a maze
     :return: None
     """
-    q = queue.Queue()  # A queue to hold all of the paths due to this Algo being BFS the first to find B will also be
-    # the shortest
+    q = queue.Queue()  # A queue to hold all of the paths due to this Algorithm being BFS the first to find B will also
+    # be the shortest
     q.put('')  # Initialising the queue with an empty string
     path = ''  # Initialising the solution with an empty String
     maze = read_maze(txt_file)  # Reading the maze from the txt file
