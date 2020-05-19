@@ -1,6 +1,8 @@
 import queue
 import numpy as np
 
+from os import path
+
 # Sources used except python documentation:
 # https://numpy.org/doc/
 # https://techwithtim.net/tutorials/breadth-first-search/
@@ -174,5 +176,33 @@ def solve(txt_file):
     print_solution(x, y, txt_file, path)
 
 
+def ask_user(n):
+    """
+    A simple recursive function that will ask the user for a file name and then solve said file. Has some exception
+    handling built in by checking if it is a valid file that the user has entered
+    :param n: A simple parameter to check if this is the first time the user has used the program, if so greet him/her
+    :return: None
+    """
+    if n == 'y':  # Greeting depending on whether the program just opened or the loop is being reused
+        print('Please enter the name of the file you want to solve: ')
+    else:
+        print('Hi and welcome to this maze solver,\nPlease enter the name of the file you want to solve: ')
+    file = input()
+    if not path.exists(file):  # Checking if the file even exists
+        print('That is not a valid file. Check that the file you are trying to solve is a maze and located in '
+              'this directory')
+        ask_user('y')
+    solve(file)
+    print('\n\nTo solve another maze enter y. If you do not want to solve another one simply press enter')
+    user_input = input()
+    if user_input == 'y':
+        ask_user('y')  # Recursive call to this function with param y to not greet the user again
+    else:
+        exit()  # If anything other than y is entered then the program will exit
+
+
 # To run the program
-solve('maze-one.txt')
+ask_user('')
+
+
+
