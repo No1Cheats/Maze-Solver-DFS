@@ -7,6 +7,3 @@ A simple maze solver that will read a maze from a txt file and then get the shor
 * PyCharm
 * Python
 
-## Contributors
-
-@TossTheDice
